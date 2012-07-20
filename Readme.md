@@ -4,6 +4,14 @@ This is a library to make using physical units easy.
 
 The library is developed as a support for BitPipeline's projects so it will not try to be generic, extensible or mantain back compatibility.
 
+# Usage
+
+When using proguard use the following rule:
+
+	-keepclassmembers class * implements org.bitpipeline.lib.units.Unit {
+		static public org.bitpipeline.lib.units.Unit unit();
+	}
+
 # License
 
 Copyright 2012 J. Miguel P. Tavares
