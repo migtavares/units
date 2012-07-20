@@ -1,0 +1,8 @@
+# eclipse stuff
+.classpath
+.settings
+.project
+
+# build artifacts
+target/
+
