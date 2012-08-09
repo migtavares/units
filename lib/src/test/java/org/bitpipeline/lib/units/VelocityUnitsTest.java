@@ -17,11 +17,11 @@ package org.bitpipeline.lib.units;
 
 import junit.framework.TestCase;
 
-import org.bitpipeline.lib.units.KnotsUnit;
-import org.bitpipeline.lib.units.MpSUnit;
-import org.bitpipeline.lib.units.Unit;
+import org.bitpipeline.lib.units.BeaufortScaleUnit.BeaufortScale;
+import org.junit.Test;
 
 public class VelocityUnitsTest extends TestCase {
+	@Test
 	public void testVelocityUnitConvertion () {
 		Unit mpsUnit = MpSUnit.unit ();
 		Unit knotsUnit = KnotsUnit.unit ();
@@ -38,5 +38,22 @@ public class VelocityUnitsTest extends TestCase {
 						knotsUnit.convertFromSIBase(Double.valueOf(value))).doubleValue(), Double.MIN_VALUE);
 		assertEquals(value*0.51444444, knotsUnit.convertToSIBase(Double.valueOf(value)).doubleValue(), 0.0000001);
 
+	}
+
+	@Test
+	public void testBeaufortConversion () {
+		BeaufortScaleUnit beu = (BeaufortScaleUnit) BeaufortScaleUnit.unit ();
+		double value;
+		for (value = 0.0; value < 40.0;) {
+			double bf = beu.convertFromSIBase (value).doubleValue ();
+			double ms = beu.convertToSIBase (bf).doubleValue ();
+			assertEquals (value, ms, 0.0000000000001);
+
+			int bsScale = (int) Math.floor (bf);
+			if (bsScale > 12) bsScale = 12;
+			BeaufortScale scale = beu.getScale (bf);
+			assertEquals (bsScale, scale.ordinal ());
+			value = value + 0.1;
+		}
 	}
 }
