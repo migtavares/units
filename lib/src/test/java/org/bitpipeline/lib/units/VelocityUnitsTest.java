@@ -37,7 +37,6 @@ public class VelocityUnitsTest extends TestCase {
 				knotsUnit.convertToSIBase(
 						knotsUnit.convertFromSIBase(Double.valueOf(value))).doubleValue(), Double.MIN_VALUE);
 		assertEquals(value*0.51444444, knotsUnit.convertToSIBase(Double.valueOf(value)).doubleValue(), 0.0000001);
-
 	}
 
 	@Test
