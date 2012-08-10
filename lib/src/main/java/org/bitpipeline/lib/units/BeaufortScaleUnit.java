@@ -36,6 +36,7 @@ public class BeaufortScaleUnit extends AbstractUnit {
 
 	static final private double[][] CONVERSION_TABLE = {
 		// m/s, bf, A, B; A used for m/s to bf, B used for bf to m/s
+		{ 0.0,  0.0, 1.0/( 0.3 -  0.0), ( 0.3 -  0.0)},
 		{ 0.0,  0.3, 1.0/( 0.3 -  0.0), ( 0.3 -  0.0)},
 		{ 1.0,  1.6, 1.0/( 1.6 -  0.3), ( 1.6 -  0.3)},
 		{ 2.0,  3.4, 1.0/( 3.4 -  1.6), ( 3.4 -  1.6)},
@@ -71,27 +72,16 @@ public class BeaufortScaleUnit extends AbstractUnit {
 	@Override
 	double convertValueToSiBase (double value) {
 		double absValue = Math.abs(value);
+
 		int i;
 		for (i=0; i < BeaufortScaleUnit.CONVERSION_TABLE.length-2; i++) {
 			if (absValue < BeaufortScaleUnit.CONVERSION_TABLE[i+1][0])
 				break;
 		}
 		double fracPart = 0.0;
-		double base = 0.0;
-		switch (i) {
-			case 0:
-				fracPart = absValue * 0.3;
-				base = 0.0;
-				break;
-			case 12:
-				fracPart = (value - BeaufortScaleUnit.CONVERSION_TABLE[11][0]) * 4.2;
-				break;
-			default:
-				base = BeaufortScaleUnit.CONVERSION_TABLE[i-1][1];
-				double d = BeaufortScaleUnit.CONVERSION_TABLE[i][3];
-				fracPart = (absValue - BeaufortScaleUnit.CONVERSION_TABLE[i][0])*d;
-				break;
-		}		
+		double base = BeaufortScaleUnit.CONVERSION_TABLE[i-1][1];
+		double d = BeaufortScaleUnit.CONVERSION_TABLE[i][3];
+		fracPart = (absValue - BeaufortScaleUnit.CONVERSION_TABLE[i][0])*d;
 		return base + fracPart;
 	}
 
@@ -106,18 +96,8 @@ public class BeaufortScaleUnit extends AbstractUnit {
 				break;
 		}
 		double fracPart;
-		switch (i) {
-			case 0:
-				fracPart = value / 0.3;
-				break;
-			case 12:
-				fracPart = (value - BeaufortScaleUnit.CONVERSION_TABLE[11][1]) / 4.2;
-				break;
-			default:
-				double d = BeaufortScaleUnit.CONVERSION_TABLE[i][2];
-				fracPart = (value - BeaufortScaleUnit.CONVERSION_TABLE[i-1][1]) * d;
-				break;
-		}		
+		double d = BeaufortScaleUnit.CONVERSION_TABLE[i][2];
+		fracPart = (value - BeaufortScaleUnit.CONVERSION_TABLE[i-1][1]) * d;
 		return BeaufortScaleUnit.CONVERSION_TABLE[i][0] + fracPart;
 	}
 
