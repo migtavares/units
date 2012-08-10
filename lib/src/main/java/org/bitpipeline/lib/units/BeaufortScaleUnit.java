@@ -18,7 +18,7 @@ package org.bitpipeline.lib.units;
 public class BeaufortScaleUnit extends AbstractUnit {
 	static final private BeaufortScaleUnit UNIT = new BeaufortScaleUnit ();
 
-	static enum BeaufortScale {
+	public static enum BeaufortScale {
 		CALM,
 		LIGHT_AIR,
 		LIGHT_BREEZE,
