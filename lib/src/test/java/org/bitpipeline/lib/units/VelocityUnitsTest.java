@@ -53,7 +53,7 @@ public class VelocityUnitsTest extends TestCase {
 			if (bsScale > 12) bsScale = 12;
 			BeaufortScale scale = beu.getScale (bf);
 			assertEquals (bsScale, scale.ordinal ());
-			value = value + 0.1;
+			value = value + 0.0001;
 		}
 	}
 }
