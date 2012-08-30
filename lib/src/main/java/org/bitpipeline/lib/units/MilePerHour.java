@@ -18,12 +18,12 @@ public final class MilePerHour extends AbstractUnit {
 
 	@Override
 	double convertValueToSiBase (double value) {
-		return value * 26.8224;
+		return value * 0.44704;
 	}
 
 	@Override
 	double convertValueFromSiBase (double value) {
-		return value / 26.8224 ;
+		return value / 0.44704;
 	}
 
 }

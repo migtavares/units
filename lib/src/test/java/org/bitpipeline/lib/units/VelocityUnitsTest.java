@@ -40,6 +40,27 @@ public class VelocityUnitsTest extends TestCase {
 	}
 
 	@Test
+	public void testMPH () {
+		MilePerHour miphUnit = (MilePerHour) MilePerHour.unit ();
+		
+		double mps = miphUnit.convertToSIBase (1.0).doubleValue ();
+		double miph = miphUnit.convertFromSIBase (mps).doubleValue ();
+		
+		assertEquals (0.44704, mps, 0.000001);
+		assertEquals (1.0, miph, 0.000000001);
+	}
+
+	@Test
+	public void testFtPS () {
+		FootPerSecond ftpsUnit = (FootPerSecond) FootPerSecond.unit ();
+		
+		double mps = ftpsUnit.convertToSIBase (1.0).doubleValue ();
+		double ftps = ftpsUnit.convertFromSIBase (mps).doubleValue ();
+		assertEquals (0.3048, mps, 0.00001);
+		assertEquals (1.0, ftps, 0.000000001);
+	}
+
+	@Test
 	public void testBeaufortConversion () {
 		BeaufortScaleUnit beu = (BeaufortScaleUnit) BeaufortScaleUnit.unit ();
 		double value;
