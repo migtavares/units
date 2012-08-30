@@ -19,7 +19,7 @@ public class LiterUnit extends AbstractUnit {
 	static final private LiterUnit UNIT = new LiterUnit ();
 
 	private LiterUnit() {
-		super("l", LengthDimension.dimension(), LengthDimension.dimension(), LengthDimension.dimension());
+		super("Litre", "l", LengthDimension.dimension(), LengthDimension.dimension(), LengthDimension.dimension());
 	}
 
 	static public Unit unit () {

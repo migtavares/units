@@ -53,7 +53,7 @@ public class BeaufortScaleUnit extends AbstractUnit {
 	};
 
 	private BeaufortScaleUnit () {
-		super ("bf", LengthDimension.dimension(), TimeDimension.dimension());
+		super ("Beaufort scale", "bf", LengthDimension.dimension(), TimeDimension.dimension());
 	}
 
 	static public Unit unit () {

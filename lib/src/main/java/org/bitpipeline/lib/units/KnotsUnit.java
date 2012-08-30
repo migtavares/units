@@ -19,7 +19,7 @@ final public class KnotsUnit extends AbstractUnit {
 	static final private KnotsUnit UNIT = new KnotsUnit ();
 
 	private KnotsUnit() {
-		super("knots", LengthDimension.dimension(), TimeDimension.dimension());
+		super("Knots", "kt", LengthDimension.dimension(), TimeDimension.dimension());
 	}
 
 	static public Unit unit () {

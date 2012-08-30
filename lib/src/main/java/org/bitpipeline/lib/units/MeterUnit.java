@@ -19,7 +19,7 @@ final public class MeterUnit extends AbstractUnit {
 	static final private MeterUnit UNIT = new MeterUnit ();
 
 	public MeterUnit() {
-		super("m", LengthDimension.dimension ());
+		super("Metre", "m", LengthDimension.dimension ());
 	}
 
 	static public Unit unit() {

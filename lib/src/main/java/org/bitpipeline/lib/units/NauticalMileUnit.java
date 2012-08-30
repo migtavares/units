@@ -19,7 +19,7 @@ final public class NauticalMileUnit extends AbstractUnit {
 	static final private NauticalMileUnit UNIT = new NauticalMileUnit();
 
 	public NauticalMileUnit() {
-		super("nmi", LengthDimension.dimension());
+		super("Nautical mile", "nmi", LengthDimension.dimension());
 	}
 
 	static public Unit unit () {

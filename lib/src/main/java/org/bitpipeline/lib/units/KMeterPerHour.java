@@ -21,7 +21,7 @@ public class KMeterPerHour extends AbstractUnit {
 	static final private KMeterPerHour UNIT = new KMeterPerHour ();
 
 	private KMeterPerHour () {
-		super ("km/h", LengthDimension.dimension(), TimeDimension.dimension());
+		super ("Kilometre per hour", "km/h", LengthDimension.dimension(), TimeDimension.dimension());
 	}
 
 	static public Unit unit () {

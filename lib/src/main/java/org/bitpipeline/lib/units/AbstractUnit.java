@@ -19,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractUnit implements Unit {
-	final protected transient List<Dimension> dimensions = new ArrayList<Dimension> ();
-	protected transient String symbol = "";
+	protected final transient List<Dimension> dimensions = new ArrayList<Dimension> ();
+	protected final transient String symbol;
+	protected final transient String name;
 
-	public AbstractUnit (final String symbol, final Dimension...dimensions) {
+	public AbstractUnit (final String name, final String symbol, final Dimension...dimensions) {
+		this.name = name;
 		this.symbol = symbol;
 
 		for (Dimension dim : dimensions) {
@@ -37,6 +39,10 @@ public abstract class AbstractUnit implements Unit {
 
 	public String getSymbol () {
 		return this.symbol;
+	}
+
+	public String getName () {
+		return this.name;
 	}
 
 	public boolean isEquivalent(final Unit unit) {

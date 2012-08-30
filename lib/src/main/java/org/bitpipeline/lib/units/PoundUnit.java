@@ -19,7 +19,7 @@ final public class PoundUnit extends AbstractUnit {
 	static final private PoundUnit UNIT = new PoundUnit ();
 
 	private PoundUnit() {
-		super("lb", MassDimension.dimension());
+		super("Imperial Standard Pound", "lb", MassDimension.dimension());
 	}
 
 	static public Unit unit () {

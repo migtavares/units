@@ -19,7 +19,7 @@ final public class KGramUnit extends AbstractUnit {
 	static final private KGramUnit UNIT = new KGramUnit ();
 
 	private KGramUnit() {
-		super("Kg", MassDimension.dimension ());
+		super("Kilogram", "kg", MassDimension.dimension ());
 	}
 
 	static public Unit unit () {

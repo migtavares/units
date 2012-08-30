@@ -19,7 +19,7 @@ final public class SecondUnit extends AbstractUnit {
 	static final private SecondUnit UNIT = new SecondUnit ();
 
 	public SecondUnit() {
-		super("s", TimeDimension.dimension());
+		super("Second", "s", TimeDimension.dimension());
 	}
 
 	static public Unit unit () {

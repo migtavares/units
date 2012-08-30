@@ -19,7 +19,7 @@ final public class SquareMeterUnit extends AbstractUnit {
 	static final private SquareMeterUnit UNIT = new SquareMeterUnit ();
 
 	private SquareMeterUnit() {
-		super("m\u00b2", LengthDimension.dimension(), LengthDimension.dimension());
+		super("Square metre", "m\u00b2", LengthDimension.dimension(), LengthDimension.dimension());
 	}
 
 	static public Unit unit () {

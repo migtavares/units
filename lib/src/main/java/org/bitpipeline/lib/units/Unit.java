@@ -24,6 +24,7 @@ public interface Unit {
 
 	List<Dimension> getDimensions ();
 
+	String getName ();
 	String getSymbol ();
 
 	Number convertToSIBase (Number value);

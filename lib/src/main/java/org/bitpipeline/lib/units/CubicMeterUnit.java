@@ -19,7 +19,7 @@ final public class CubicMeterUnit extends AbstractUnit {
 	static final private CubicMeterUnit UNIT = new CubicMeterUnit ();
 
 	private CubicMeterUnit() {
-		super("m\u00b3", LengthDimension.dimension(), LengthDimension.dimension(), LengthDimension.dimension());
+		super("Cubic metre", "m\u00b3", LengthDimension.dimension(), LengthDimension.dimension(), LengthDimension.dimension());
 	}
 
 	static public Unit unit () {

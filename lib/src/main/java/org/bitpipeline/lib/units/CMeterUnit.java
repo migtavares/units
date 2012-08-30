@@ -19,7 +19,7 @@ public class CMeterUnit extends AbstractUnit {
 	static final private CMeterUnit UNIT = new CMeterUnit ();
 
 	public CMeterUnit() {
-		super("cm", LengthDimension.dimension ());
+		super("Centimetre", "cm", LengthDimension.dimension ());
 	}
 
 	static public Unit unit() {

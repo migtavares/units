@@ -19,7 +19,7 @@ final public class HourUnit extends AbstractUnit {
 	static final private HourUnit UNIT = new HourUnit ();
 
 	private HourUnit() {
-		super("H", TimeDimension.dimension());
+		super("Hour", "H", TimeDimension.dimension());
 	}
 
 	static public Unit unit () {
