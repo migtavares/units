@@ -17,27 +17,23 @@ package org.bitpipeline.lib.units;
 
 import junit.framework.TestCase;
 
-import org.bitpipeline.lib.units.KGramUnit;
-import org.bitpipeline.lib.units.Measurement;
-import org.bitpipeline.lib.units.PoundUnit;
+import org.bitpipeline.lib.units.MeasurementD;
+import org.bitpipeline.lib.units.base.mass.Kilogram;
+import org.bitpipeline.lib.units.base.mass.Pound;
+import org.junit.Test;
 
 public class WeightUnitsTest extends TestCase {
-
-	public WeightUnitsTest() {
-		KGramUnit.unit ();
-		PoundUnit.unit ();
-	}
-
+	@Test
 	public void testWeightUnits () {
 		double value = 10.0d;
-		Measurement<Double> weight = new Measurement<Double>(Double.valueOf (value), KGramUnit.unit ());
+		MeasurementD weight = new MeasurementD (value, Kilogram.unit ());
 
-		Double measValue = weight.getValueSIBase();
-		assertEquals(value, measValue.doubleValue(), Double.MIN_VALUE);
+		double measValue = weight.getValueSIBase();
+		assertEquals(value, value, Double.MIN_VALUE*10.0);
 
-		weight.convertToUnit(PoundUnit.unit ());
+		weight.convertToUnit(Pound.unit ());
 		measValue = weight.getValueSIBase();
-		assertEquals(value, measValue.doubleValue(), Double.MIN_VALUE);
+		assertEquals(value, measValue, Double.MIN_VALUE*10.0);
 	}
 
 }

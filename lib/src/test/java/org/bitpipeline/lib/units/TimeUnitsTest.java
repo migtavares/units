@@ -17,26 +17,25 @@ package org.bitpipeline.lib.units;
 
 import junit.framework.TestCase;
 
-import org.bitpipeline.lib.units.HourUnit;
-import org.bitpipeline.lib.units.SecondUnit;
-import org.bitpipeline.lib.units.Unit;
+import org.bitpipeline.lib.units.base.time.Hour;
+import org.bitpipeline.lib.units.base.time.Second;
 
 public class TimeUnitsTest extends TestCase {
 	public void testTimeUnitsConvertion () {
-		Unit sUnit = SecondUnit.unit();
-		Unit hUnit = HourUnit.unit ();
+		Second sUnit = (Second) Second.unit();
+		Hour hUnit = (Hour) Hour.unit ();
 
 		double sValue = 1800.0d;
 		double hValue = 2.0d;
 
 		// convert from seconds to seconds
-		assertEquals(sValue, sUnit.convertFromSIBase(Double.valueOf(sValue)).doubleValue(), Double.MIN_VALUE);
-		assertEquals(sValue, sUnit.convertToSIBase(Double.valueOf(sValue)).doubleValue(), Double.MIN_VALUE);
+		assertEquals(sValue, sUnit.convertFromSIBase(sValue), Double.MIN_VALUE);
+		assertEquals(sValue, sUnit.convertToSIBase(sValue), Double.MIN_VALUE);
 		// Convert from seconds to hours
-		assertEquals(0.5d, hUnit.convertFromSIBase(Double.valueOf(sValue)).doubleValue(), Double.MIN_VALUE);
+		assertEquals(0.5d, hUnit.convertFromSIBase(sValue), Double.MIN_VALUE);
 
 		// convert from hours to seconds
-		assertEquals(7200.0d, hUnit.convertToSIBase(Double.valueOf(hValue)).doubleValue(), Double.MIN_VALUE);
+		assertEquals(7200.0d, hUnit.convertToSIBase(hValue), Double.MIN_VALUE);
 
 	}
 }
