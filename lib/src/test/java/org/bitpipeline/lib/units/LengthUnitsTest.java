@@ -39,4 +39,14 @@ public class LengthUnitsTest extends TestCase {
 		// conversion from nautical mile to meter
 		assertEquals(1.0d * 1852.0d, nmiUnit.convertToSIBase(nmiValue).doubleValue(), Double.MIN_VALUE);
 	}
+
+	public void footLenghtUnitTests () {
+		Unit foot = FootUnit.unit ();
+
+		// conversion from 1.0 foot to meter
+		assertEquals (0.3048d, foot.convertToSIBase (1.0d));
+
+		// conversion from 1.0 meter to foot
+		assertEquals (3.2808399d, foot.convertFromSIBase (1.0d));
+	}
 }
