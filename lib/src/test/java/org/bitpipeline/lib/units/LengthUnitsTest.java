@@ -49,4 +49,14 @@ public class LengthUnitsTest extends TestCase {
 		// conversion from 1.0 meter to foot
 		assertEquals (3.2808399d, foot.convertFromSIBase (1.0d));
 	}
+
+	public void inchUnitTests () {
+		Unit inch = InchUnit.unit ();
+
+		// conversion from 1.0 inch to meter
+		assertEquals (0.0254d, inch.convertToSIBase (1.0d));
+
+		// conversion from 1.0 meter to inch
+		assertEquals (39.370079d, inch.convertFromSIBase (1.0d));
+	}
 }
