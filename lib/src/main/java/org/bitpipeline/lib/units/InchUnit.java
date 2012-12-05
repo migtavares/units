@@ -19,7 +19,7 @@ public class InchUnit extends AbstractUnit {
 	static final private InchUnit UNIT = new InchUnit ();
 
 	public InchUnit() {
-		super("Inch", "\"", LengthDimension.dimension ());
+		super("Inch", "in", LengthDimension.dimension ());
 	}
 
 	static public Unit unit() {

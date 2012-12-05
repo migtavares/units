@@ -19,7 +19,7 @@ public class FootUnit extends AbstractUnit {
 	static final private FootUnit UNIT = new FootUnit ();
 
 	public FootUnit() {
-		super("Foot", "'", LengthDimension.dimension ());
+		super("Foot", "ft", LengthDimension.dimension ());
 	}
 
 	static public Unit unit() {
