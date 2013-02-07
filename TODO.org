@@ -1,0 +1,33 @@
+
+* Features
+
+** TODO Support saving the state of the units
+
+*** Why
+    Support saving the current state of the unit factories so that
+
+*** How
+    Probably by enabling some sort of serialization in the units and dimensions.
+
+*** Analysis
+    A nice additional feature will be that it will be possible to store unit choices.
+
+
+** TODO Support non dimensional units
+
+*** Why
+    For some physical constants or values that have no dimension.
+
+*** How
+    Probably just have two singletons, something like:
+
+    - NonDimensionalUnit :: a "fake" unit that has a VoidDimension as dimension;
+    - VoidDimension :: this would be the "a dimensional" dimension. It's only unit would be the NonDimensionalUnit.
+
+** TODO Proper time support
+
+*** Why
+    To have proper conversion between Time units.
+
+*** How
+    Probably by using java.util.Date or maybe providing a option to use with JodaTime.
