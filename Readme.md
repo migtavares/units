@@ -1,6 +1,9 @@
 # Introduction
 This is a library to make using physical units easy.
 
+# Java docs
+Java docs are available at [bitpipeline website](http://bitpipeline.eu/apidocs/units/1.9-SNAPSHOT/).
+
 # Overview
 Units are used to relate values to dimensions. For example the dimension Length (or Distance) can use units such as metre, foot or mile.
 
