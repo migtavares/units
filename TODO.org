@@ -24,6 +24,7 @@
     - NonDimensionalUnit :: a "fake" unit that has a VoidDimension as dimension;
     - VoidDimension :: this would be the "a dimensional" dimension. It's only unit would be the NonDimensionalUnit.
 
+
 ** TODO Proper time support
 
 *** Why
@@ -31,3 +32,14 @@
 
 *** How
     Probably by using java.util.Date or maybe providing a option to use with JodaTime.
+
+
+** TODO simplification of quotient units
+
+*** Why
+    To make quotient units simpler.
+*** How
+    Probably by removing units that cancel one another in the quotient.
+*** Analysis
+    - Removing units from a product unit will lead to the creation of a new dimension;
+    - We'll need to deal with simplifications where the divisor becomes empty and we would return a unit product or even a single base unit.
