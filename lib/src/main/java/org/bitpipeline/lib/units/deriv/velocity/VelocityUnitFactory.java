@@ -18,10 +18,13 @@ package org.bitpipeline.lib.units.deriv.velocity;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Foot;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
+import org.bitpipeline.lib.units.base.length.Metre;
 import org.bitpipeline.lib.units.base.length.NauticalMile;
+import org.bitpipeline.lib.units.base.length.USMile;
 import org.bitpipeline.lib.units.base.time.Hour;
 import org.bitpipeline.lib.units.base.time.Second;
 import org.bitpipeline.lib.units.base.time.TimeDimension;
+import org.bitpipeline.lib.units.deriv.Prefix;
 import org.bitpipeline.lib.units.deriv.UnitConverter;
 import org.bitpipeline.lib.units.deriv.UnitFactory;
 
@@ -103,4 +106,64 @@ public class VelocityUnitFactory {
 		return BeaufortScale.unit ();
 	}
 
+	static final private UnitConverter KILOMETRE_PER_HOUR_CONVERTER = new UnitConverter () {
+		@Override
+		public float convertToSIBase (float value) {
+			return value / 3.6f;
+		}
+
+		@Override
+		public double convertToSIBase (double value) {
+			return value / 3.6d;
+		}
+
+		@Override
+		public float convertFromSIBase (float value) {
+			return value * 3.6f;
+		}
+
+		@Override
+		public double convertFromSIBase (double value) {
+			return value * 3.6d;
+		}
+		
+	};
+
+	/** Kilometre per hour 
+	 * @return a quotient unit with a prefixed unit of killo and Metre as dividend, and Hour as divisor. */
+	static public Unit getKMetrePerHour () {
+		return UnitFactory.getOrCreateQuotient ("kilometre per hour", "km/h",
+				UnitFactory.getOrCreatePrefixedUnit (Prefix.KILO, Metre.unit ()), Hour.unit (),
+				VelocityUnitFactory.KILOMETRE_PER_HOUR_CONVERTER);
+	}
+
+	static final private UnitConverter US_MILE_PER_HOUR_CONVERTER = new UnitConverter() {
+		@Override
+		public double convertToSIBase (double value) {
+			return value * 0.44704d;
+		}
+
+		@Override
+		public float convertToSIBase (float value) {
+			return value * 0.44704f;
+		}
+
+		@Override
+		public double convertFromSIBase (double value) {
+			return value * 2.236936d;
+		}
+
+		@Override
+		public float convertFromSIBase (float value) {
+			return value * 2.236936f;
+		}
+	};
+
+	/** US land miles per hour 
+	 * @return a quotient unit with a USMile as dividend, and Hour as divisor. */
+	static public Unit getUSMilesPerHour () {
+		return UnitFactory.getOrCreateQuotient ("miles per hour", "mph",
+				USMile.unit (), Hour.unit (),
+				VelocityUnitFactory.US_MILE_PER_HOUR_CONVERTER);
+	}
 }
