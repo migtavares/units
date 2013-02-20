@@ -43,3 +43,10 @@
 *** Analysis
     - Removing units from a product unit will lead to the creation of a new dimension;
     - We'll need to deal with simplifications where the divisor becomes empty and we would return a unit product or even a single base unit.
+
+
+* Support
+
+** TODO Upload artifacts to a mvn repository
+
+** TODO Upload api docs to github pages after each build
