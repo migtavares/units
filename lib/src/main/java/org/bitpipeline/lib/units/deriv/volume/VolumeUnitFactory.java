@@ -15,19 +15,21 @@
  ***************************************************************************/
 package org.bitpipeline.lib.units.deriv.volume;
 
+import org.bitpipeline.lib.units.Dimension;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Metre;
+import org.bitpipeline.lib.units.deriv.Prefix;
 import org.bitpipeline.lib.units.deriv.UnitConverter;
 import org.bitpipeline.lib.units.deriv.UnitFactory;
 
 /** This is a class provides some pre defined Volume units.
  * @author mtavares */
 public class VolumeUnitFactory {
+	static final Dimension SI_DIMENSION = VolumeDimension.dimension ();
+
 	/** Cubic Metre - the SI unit for volumes measurements. */
 	static public Unit getCubicMetre () {
-		return UnitFactory.getOrCreateSIProduct (
-				"cubic metre", "m\u00b3",
-				Metre.unit (), Metre.unit (), Metre.unit ());
+		return VolumeUnitFactory.SI_DIMENSION.getSIUnit ();
 	}
 
 	static final private UnitConverter LITRE_CONVERTER = new UnitConverter () {
@@ -54,9 +56,10 @@ public class VolumeUnitFactory {
 
 	/** Litre */
 	static public Unit getLitre () {
+		final Unit decimetre = UnitFactory.getOrCreatePrefixedUnit (Prefix.DECI, Metre.unit ());
 		return UnitFactory.getOrCreateProduct (
 				"litre", "l",
 				VolumeUnitFactory.LITRE_CONVERTER,
-				Metre.unit (), Metre.unit (), Metre.unit ());
+				decimetre, decimetre, decimetre);
 	}
 }

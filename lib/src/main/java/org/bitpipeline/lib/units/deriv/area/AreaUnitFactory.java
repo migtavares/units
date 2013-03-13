@@ -15,20 +15,20 @@
  ***************************************************************************/
 package org.bitpipeline.lib.units.deriv.area;
 
+import org.bitpipeline.lib.units.Dimension;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Foot;
-import org.bitpipeline.lib.units.base.length.Metre;
 import org.bitpipeline.lib.units.deriv.UnitConverter;
 import org.bitpipeline.lib.units.deriv.UnitFactory;
 
 /** This is a class provides some pre defined Area units.
  * @author mtavares */
 public class AreaUnitFactory {
+	static final Dimension SI_DIMENSION = AreaDimension.dimension ();
+	
 	/** Square Metre - the SI unit for Area. */
 	static public Unit getSquareMetre () {
-		return UnitFactory.getOrCreateSIProduct (
-				"square metre", "m\u00b2",
-				Metre.unit (), Metre.unit ());
+		return AreaUnitFactory.SI_DIMENSION.getSIUnit ();
 	}
 
 	static final private UnitConverter SQUARE_FOOT_CONVERTER = new UnitConverter () {

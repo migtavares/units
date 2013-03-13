@@ -15,6 +15,7 @@
  ***************************************************************************/
 package org.bitpipeline.lib.units.deriv.velocity;
 
+import org.bitpipeline.lib.units.Dimension;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Foot;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
@@ -31,12 +32,12 @@ import org.bitpipeline.lib.units.deriv.UnitFactory;
 /** This is a class provides some pre defined Velocity units.
  * @author mtavares */
 public class VelocityUnitFactory {
+	static final Dimension SI_DIMENSION = VelocityDimension.dimension ();
+
 	/** Metre per second - the SI unit for velocity
 	 * @return a quotient unit with Metre as the dividend and Second as the divisor. */
 	static public Unit getMetrePerSecond () {
-		return UnitFactory.getOrCreateSIQuotient (
-				"metre per second", "m/s",
-				LengthDimension.dimension (), TimeDimension.dimension ());
+		return VelocityUnitFactory.SI_DIMENSION.getSIUnit ();
 	}
 
 	static final private UnitConverter KNOTS_UNIT_CONVERTER = new UnitConverter () {

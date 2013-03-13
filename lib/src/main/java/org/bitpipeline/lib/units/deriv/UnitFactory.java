@@ -143,7 +143,7 @@ public class UnitFactory {
 			Dimension dim = DimensionFactory.getOrCreateProduct (
 					new ProductUnit.ProductUnitDefaultNamingProvider (subDimensions),
 					subDimensions);
-			productUnit = new ProductUnit (dim, converter, units);
+			productUnit = new ProductUnit (name, symbol, dim, converter, units);
 		} 
 		return productUnit;
 	}

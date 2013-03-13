@@ -17,11 +17,25 @@ package org.bitpipeline.lib.units.deriv;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.Dimension;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.deriv.area.AreaUnitFactory;
 import org.junit.Test;
 
 public class AreaUnitsTest extends TestCase {
+	@Test
+	public void testSquaredUnitHasProperNamesAndSymbols () {
+		AreaUnitFactory.getSquareFoot ();
+		Unit squareMetre = AreaUnitFactory.getSquareMetre ();
+
+		assertEquals ("square metre", squareMetre.getName ());
+		assertEquals ("m\u00b2", squareMetre.getSymbol ());
+
+		Dimension dimension = squareMetre.getDimension ();
+		assertEquals ("area", dimension.getName ());
+		assertEquals ("A", dimension.getSymbol ());
+	}
+
 	@Test
 	public void testSquareFootUnit () {
 		Unit sFoot = AreaUnitFactory.getSquareFoot ();
