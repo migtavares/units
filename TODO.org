@@ -1,6 +1,8 @@
 
 * Features
 
+** TODO Support non base 10 units (such as 1 feet = 12 inches)
+
 ** TODO Support saving the state of the units
 
 *** Why
