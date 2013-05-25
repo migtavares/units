@@ -29,11 +29,11 @@ public class WeightUnitsTest extends TestCase {
 		MeasurementD weight = new MeasurementD (value, Kilogram.unit ());
 
 		double measValue = weight.getValueSIBase();
-		assertEquals(value, value, Double.MIN_VALUE*10.0);
+		assertEquals(value, value, PrecisionExpectations.FOR_DOUBLES);
 
 		weight.convertToUnit(Pound.unit ());
 		measValue = weight.getValueSIBase();
-		assertEquals(value, measValue, Double.MIN_VALUE*10.0);
+		assertEquals(value, measValue, PrecisionExpectations.FOR_DOUBLES);
 	}
 
 }

@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.length;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Foot;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
@@ -53,24 +54,24 @@ public class FootTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				foot.convertFromSIBase (foot.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				foot.convertFromSIBase (foot.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				foot.convertToSIBase (foot.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				foot.convertToSIBase (foot.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		// conversion from 1.0 foot to meter
-		assertEquals (0.3048d, foot.convertToSIBase (1.0d), 0.00001d);
-		assertEquals (0.3048f, foot.convertToSIBase (1.0f), 0.00001f);
+		assertEquals (0.3048d, foot.convertToSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (0.3048f, foot.convertToSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 
 		// conversion from 1.0 meter to foot
-		assertEquals (3.2808399d, foot.convertFromSIBase (1.0d), 0.0000001d);
-		assertEquals (3.2808399f, foot.convertFromSIBase (1.0f), 0.0000001f);
+		assertEquals (3.2808399d, foot.convertFromSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (3.2808399f, foot.convertFromSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 	}
 }

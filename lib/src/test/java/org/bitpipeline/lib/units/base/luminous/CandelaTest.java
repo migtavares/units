@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.luminous;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.luminous.Candela;
 import org.bitpipeline.lib.units.base.luminous.LuminousIntensityDimension;
@@ -51,10 +52,10 @@ public class CandelaTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals(dValue, candela.convertToSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, candela.convertToSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, candela.convertToSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, candela.convertToSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(dValue, candela.convertFromSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, candela.convertFromSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, candela.convertFromSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, candela.convertFromSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 	}
 }

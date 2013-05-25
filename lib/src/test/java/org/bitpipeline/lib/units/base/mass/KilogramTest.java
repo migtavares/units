@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.mass;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.mass.Kilogram;
 import org.bitpipeline.lib.units.base.mass.MassDimension;
@@ -51,10 +52,10 @@ public class KilogramTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals("convertToSIBase(double) should keep the value", dValue, kg.convertToSIBase (dValue), Double.MIN_NORMAL*1000d);
-		assertEquals("convertToSIBase(float) should keep the value", fValue, kg.convertToSIBase (fValue), Float.MIN_NORMAL*1000f);
+		assertEquals("convertToSIBase(double) should keep the value", dValue, kg.convertToSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals("convertToSIBase(float) should keep the value", fValue, kg.convertToSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals("convertFomSIBase(double) should keep the value", dValue, kg.convertFromSIBase (dValue), Double.MIN_NORMAL*1000d);
-		assertEquals("convertFomSIBase(float) should keep the value", fValue, kg.convertFromSIBase (fValue), Float.MIN_NORMAL*1000f);
+		assertEquals("convertFomSIBase(double) should keep the value", dValue, kg.convertFromSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals("convertFomSIBase(float) should keep the value", fValue, kg.convertFromSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 	}
 }

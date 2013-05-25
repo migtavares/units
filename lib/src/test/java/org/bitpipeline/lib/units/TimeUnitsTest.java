@@ -29,13 +29,13 @@ public class TimeUnitsTest extends TestCase {
 		double hValue = 2.0d;
 
 		// convert from seconds to seconds
-		assertEquals(sValue, sUnit.convertFromSIBase(sValue), Double.MIN_VALUE);
-		assertEquals(sValue, sUnit.convertToSIBase(sValue), Double.MIN_VALUE);
+		assertEquals(sValue, sUnit.convertFromSIBase(sValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(sValue, sUnit.convertToSIBase(sValue), PrecisionExpectations.FOR_DOUBLES);
 		// Convert from seconds to hours
-		assertEquals(0.5d, hUnit.convertFromSIBase(sValue), Double.MIN_VALUE);
+		assertEquals(0.5d, hUnit.convertFromSIBase(sValue), PrecisionExpectations.FOR_DOUBLES);
 
 		// convert from hours to seconds
-		assertEquals(7200.0d, hUnit.convertToSIBase(hValue), Double.MIN_VALUE);
+		assertEquals(7200.0d, hUnit.convertToSIBase(hValue), PrecisionExpectations.FOR_DOUBLES);
 
 	}
 }

@@ -26,13 +26,13 @@ public class MeasurementTest extends TestCase {
 	public void testFloatMeasurementsUnitConversion () {
 		MeasurementF weight = new MeasurementF (10f, Kilogram.unit ());
 
-		assertEquals(10f, weight.getValueSIBase(), Float.MIN_NORMAL);
+		assertEquals(10f, weight.getValueSIBase(), PrecisionExpectations.FOR_FLOATS);
 
 		weight.convertToUnit(Pound.unit ());
 
 		assertEquals (Pound.unit (), weight.getUnit ());
-		assertEquals (10f, weight.getValueSIBase(), Float.MIN_NORMAL);
-		assertEquals (22.0462f, weight.getValue (), 0.0001f);
+		assertEquals (10f, weight.getValueSIBase(), PrecisionExpectations.FOR_FLOATS);
+		assertEquals (22.0462f, weight.getValue (), PrecisionExpectations.FOR_FLOATS);
 	}
 
 
@@ -40,19 +40,19 @@ public class MeasurementTest extends TestCase {
 	public void testDoubleMeasurementsUnitConversion () {
 		MeasurementD weight = new MeasurementD (10d, Kilogram.unit ());
 
-		assertEquals(10d, weight.getValueSIBase(), Double.MIN_NORMAL);
+		assertEquals(10d, weight.getValueSIBase(), PrecisionExpectations.FOR_DOUBLES);
 
 		weight.convertToUnit(Pound.unit ());
 
 		assertEquals (Pound.unit (), weight.getUnit ());
-		assertEquals (10d, weight.getValueSIBase(), Double.MIN_NORMAL);
-		assertEquals (22.0462d, weight.getValue (), 0.0001d);
+		assertEquals (10d, weight.getValueSIBase(), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (22.046226d, weight.getValue (), PrecisionExpectations.FOR_DOUBLES);
 
-		weight.setValue (44.0924d);
-		assertEquals (20d, weight.getValueAs (Kilogram.unit ()), 0.0001d);
+		weight.setValue (44.092452d);
+		assertEquals (20.0d, weight.getValueAs (Kilogram.unit ()), PrecisionExpectations.FOR_DOUBLES);
 
 		weight.setValue (10d, Kilogram.unit ());
-		assertEquals (22.0462d, weight.getValue (), 0.0001d);
+		assertEquals (22.046226d, weight.getValue (), PrecisionExpectations.FOR_DOUBLES);
 	}
 
 	class MeasurementFListenerSpy implements MeasurementFListener {
@@ -70,28 +70,28 @@ public class MeasurementTest extends TestCase {
 	@Test
 	public void testMeasurementsListeners () {
 		MeasurementF weight = new MeasurementF (10f, Kilogram.unit ());
-		assertEquals(10f, weight.getValueSIBase(), Float.MIN_NORMAL);
+		assertEquals(10f, weight.getValueSIBase(), PrecisionExpectations.FOR_FLOATS);
 
 		MeasurementFListenerSpy listenerA = new MeasurementFListenerSpy ();
 		weight.addListener (listenerA);
-		assertEquals (10f, listenerA.getValue (), Float.MIN_NORMAL);
+		assertEquals (10f, listenerA.getValue (), PrecisionExpectations.FOR_FLOATS);
 		
 		MeasurementFListenerSpy listenerB = new MeasurementFListenerSpy ();
 		weight.addListener (listenerB);
-		assertEquals (10f, listenerB.getValue (), Float.MIN_NORMAL);
+		assertEquals (10f, listenerB.getValue (), PrecisionExpectations.FOR_FLOATS);
 
 		weight.removeListener (listenerA);
 
 		weight.convertToUnit(Pound.unit ());
 
-		assertEquals (10f, listenerA.getValue (), Float.MIN_NORMAL);
-		assertEquals (22.0462f, weight.getValue (), 0.0001f);
+		assertEquals (10f, listenerA.getValue (), PrecisionExpectations.FOR_FLOATS);
+		assertEquals (22.0462f, weight.getValue (), PrecisionExpectations.FOR_FLOATS);
 
 		weight.setValue (44.0924f);
-		assertEquals (44.0924f, weight.getValue (), 0.0001f);
+		assertEquals (44.0924f, weight.getValue (), PrecisionExpectations.FOR_FLOATS);
 
 		weight.setValue (10f, Kilogram.unit ());
-		assertEquals (22.0462f, weight.getValue (), 0.0001f);
+		assertEquals (22.0462f, weight.getValue (), PrecisionExpectations.FOR_FLOATS);
 	}
 
 }

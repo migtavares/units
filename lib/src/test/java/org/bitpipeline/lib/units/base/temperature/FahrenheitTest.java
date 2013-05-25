@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.temperature;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.temperature.Fahrenheit;
 import org.bitpipeline.lib.units.base.temperature.TemperatureDimension;
@@ -53,16 +54,16 @@ public class FahrenheitTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				fahrenheit.convertFromSIBase (fahrenheit.convertToSIBase (dValue)),
-				0.000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				fahrenheit.convertFromSIBase (fahrenheit.convertToSIBase (fValue)),
-				0.001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				fahrenheit.convertToSIBase (fahrenheit.convertFromSIBase (dValue)),
-				0.000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				fahrenheit.convertToSIBase (fahrenheit.convertFromSIBase (fValue)),
-				0.001f);
+				PrecisionExpectations.FOR_FLOATS);
 	}
 }

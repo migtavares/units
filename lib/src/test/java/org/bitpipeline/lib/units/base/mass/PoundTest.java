@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.mass;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.mass.MassDimension;
 import org.bitpipeline.lib.units.base.mass.Pound;
@@ -53,16 +54,16 @@ public class PoundTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				pound.convertFromSIBase (pound.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				pound.convertFromSIBase (pound.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				pound.convertToSIBase (pound.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				pound.convertToSIBase (pound.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 	}
 }

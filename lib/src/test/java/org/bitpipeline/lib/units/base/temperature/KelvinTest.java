@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.temperature;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.temperature.Kelvin;
 import org.bitpipeline.lib.units.base.temperature.TemperatureDimension;
@@ -51,10 +52,10 @@ public class KelvinTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals(dValue, kelvin.convertToSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, kelvin.convertToSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, kelvin.convertToSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, kelvin.convertToSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(dValue, kelvin.convertFromSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, kelvin.convertFromSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, kelvin.convertFromSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, kelvin.convertFromSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 	}
 }

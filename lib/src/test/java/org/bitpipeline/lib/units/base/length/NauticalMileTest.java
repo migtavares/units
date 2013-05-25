@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.length;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
 import org.bitpipeline.lib.units.base.length.NauticalMile;
@@ -53,22 +54,22 @@ public class NauticalMileTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				nmile.convertFromSIBase (nmile.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				nmile.convertFromSIBase (nmile.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				nmile.convertToSIBase (nmile.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				nmile.convertToSIBase (nmile.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(2.0d / 1852.0d, nmile.convertFromSIBase(2.0d), Double.MIN_NORMAL);
-		assertEquals(2.0f / 1852.0f, nmile.convertFromSIBase(2.0f), Float.MIN_NORMAL);
+		assertEquals(2.0d / 1852.0d, nmile.convertFromSIBase(2.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(2.0f / 1852.0f, nmile.convertFromSIBase(2.0f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(2.0d * 1852.0d, nmile.convertToSIBase(2.0d), Double.MIN_NORMAL);
-		assertEquals(2.0d * 1852.0d, nmile.convertToSIBase(2.0f), Double.MIN_NORMAL);
+		assertEquals(2.0d * 1852.0d, nmile.convertToSIBase(2.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(2.0d * 1852.0d, nmile.convertToSIBase(2.0f), PrecisionExpectations.FOR_FLOATS);
 	}
 }

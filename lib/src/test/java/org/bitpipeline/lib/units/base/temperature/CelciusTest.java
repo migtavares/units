@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.temperature;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.temperature.Celsius;
 import org.bitpipeline.lib.units.base.temperature.TemperatureDimension;
@@ -53,16 +54,16 @@ public class CelciusTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				celsius.convertFromSIBase (celsius.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				celsius.convertFromSIBase (celsius.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				celsius.convertToSIBase (celsius.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				celsius.convertToSIBase (celsius.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 	}
 }

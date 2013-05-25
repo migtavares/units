@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.electric;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.electric.Ampere;
 import org.bitpipeline.lib.units.base.electric.ElectricCurrentDimension;
@@ -51,10 +52,10 @@ public class AmpereUnitTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals(dValue, ampere.convertToSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, ampere.convertToSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, ampere.convertToSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, ampere.convertToSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(dValue, ampere.convertFromSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, ampere.convertFromSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, ampere.convertFromSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, ampere.convertFromSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 	}
 }

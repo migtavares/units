@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.substance;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.substance.Mole;
 import org.bitpipeline.lib.units.base.substance.SubstanceDimension;
@@ -51,10 +52,10 @@ public class MoleUnitTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals(dValue, mol.convertToSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, mol.convertToSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, mol.convertToSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, mol.convertToSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(dValue, mol.convertFromSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, mol.convertFromSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, mol.convertFromSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, mol.convertFromSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 	}
 }

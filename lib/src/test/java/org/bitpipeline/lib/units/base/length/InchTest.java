@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.length;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Inch;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
@@ -53,24 +54,24 @@ public class InchTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				inch.convertFromSIBase (inch.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				inch.convertFromSIBase (inch.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				inch.convertToSIBase (inch.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				inch.convertToSIBase (inch.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		// conversion from 1.0 inch to meter
-		assertEquals (0.0254d, inch.convertToSIBase (1.0d), Double.MIN_VALUE);
-		assertEquals (0.0254f, inch.convertToSIBase (1.0f), Float.MIN_VALUE);
+		assertEquals (0.0254d, inch.convertToSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (0.0254f, inch.convertToSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 		
 		// conversion from 1.0 meter to inch
-		assertEquals (39.370079d, inch.convertFromSIBase (1.0d), 0.000001d);
-		assertEquals (39.370079f, inch.convertFromSIBase (1.0f), 0.000001f);
+		assertEquals (39.370079d, inch.convertFromSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (39.370079f, inch.convertFromSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 	}
 }

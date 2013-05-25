@@ -18,6 +18,7 @@ package org.bitpipeline.lib.units.deriv;
 import junit.framework.TestCase;
 
 import org.bitpipeline.lib.units.AbstractUnit;
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
 import org.bitpipeline.lib.units.base.time.Hour;
@@ -34,16 +35,17 @@ public class VelocityUnitsTest extends TestCase {
 		double value = 5.0d;
 
 		// Test the SI base unit
-		assertEquals(value, mpsUnit.convertFromSIBase(value), Double.MIN_VALUE);
-		assertEquals(value, mpsUnit.convertToSIBase(value), Double.MIN_VALUE);
+		assertEquals(value, mpsUnit.convertFromSIBase(value), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(value, mpsUnit.convertToSIBase(value), PrecisionExpectations.FOR_DOUBLES);
 
 		// test the knots conversion
 		assertEquals(
 				value,
 				knotsUnit.convertToSIBase(knotsUnit.convertFromSIBase(value)),
-				Double.MIN_VALUE);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(value*0.51444444d,
-				knotsUnit.convertToSIBase(value), 0.0000001);
+				knotsUnit.convertToSIBase(value),
+				PrecisionExpectations.FOR_DOUBLES);
 	}
 
 	static class Mile extends AbstractUnit {
@@ -90,12 +92,12 @@ public class VelocityUnitsTest extends TestCase {
 				Mile.unit (), Hour.unit (), new UnitConverter() {
 					@Override
 					public double convertToSIBase (double value) {
-						return value * 0.44704d;
+						return value * 0.44703805992635d;
 					}
 
 					@Override
 					public float convertToSIBase (float value) {
-						return value * 0.44704f;
+						return value * 0.44703805992635f;
 					}
 
 					@Override
@@ -109,31 +111,31 @@ public class VelocityUnitsTest extends TestCase {
 					}
 				});
 		
-		double mps = miphUnit.convertToSIBase(1.0);
+		double mps = miphUnit.convertToSIBase(1.0d);
 		double miph = miphUnit.convertFromSIBase(mps);
-		
-		assertEquals (0.44704d, mps, 0.000001d);
-		assertEquals (1.0d, miph, 0.00001d);
+
+		assertEquals (0.447038d, mps, PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (1.0d, miph, PrecisionExpectations.FOR_DOUBLES);
 	}
 
 	@Test
 	public void testFtPS () {
 		Unit ftpsUnit = VelocityUnitFactory.getFootPerSecond ();
 		
-		double mps = ftpsUnit.convertToSIBase(1.0);
+		double mps = ftpsUnit.convertToSIBase(1.0d);
 		double ftps = ftpsUnit.convertFromSIBase(mps);
-		assertEquals (0.3048, mps, 0.00001);
-		assertEquals (1.0, ftps, 0.00001);
+		assertEquals (0.3048d, mps, PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (1.0d, ftps, PrecisionExpectations.FOR_DOUBLES);
 	}
 
 	@Test
 	public void testBeaufortConversion () {
 		Unit bfUnit = VelocityUnitFactory.getBeaufortScale ();
 		double value;
-		for (value = 0.0; value < 40.0; value = value +0.0001) {
+		for (value = 0.0d; value < 40.0d; value = value +0.0001d) {
 			double bf = bfUnit.convertFromSIBase(value);
 			double ms = bfUnit.convertToSIBase(bf);
-			assertEquals (value, ms, 0.0000000000001);
+			assertEquals (value, ms, PrecisionExpectations.FOR_DOUBLES);
 
 			int bsScale = (int) Math.floor (bf);
 			if (bsScale > 12) bsScale = 12;

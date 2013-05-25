@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.length;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.LengthDimension;
 import org.bitpipeline.lib.units.base.length.Metre;
@@ -51,10 +52,10 @@ public class MetreTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals(dValue, metre.convertToSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, metre.convertToSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, metre.convertToSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, metre.convertToSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(dValue, metre.convertFromSIBase (dValue), Double.MIN_NORMAL);
-		assertEquals(fValue, metre.convertFromSIBase (fValue), Float.MIN_NORMAL);
+		assertEquals(dValue, metre.convertFromSIBase (dValue), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, metre.convertFromSIBase (fValue), PrecisionExpectations.FOR_FLOATS);
 	}
 }

@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.time;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.time.Hour;
 import org.bitpipeline.lib.units.base.time.TimeDimension;
@@ -53,16 +54,16 @@ public class HourTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				hour2.convertFromSIBase (hour2.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				hour2.convertFromSIBase (hour2.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				hour2.convertToSIBase (hour2.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				hour2.convertToSIBase (hour2.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 	}
 }

@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.base.length;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.junit.Test;
 
@@ -51,22 +52,22 @@ public class USMileTest extends TestCase {
 		// Test the SI base unit
 		assertEquals(dValue, 
 				usmile.convertFromSIBase (usmile.convertToSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				usmile.convertFromSIBase (usmile.convertToSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
 		assertEquals(dValue, 
 				usmile.convertToSIBase (usmile.convertFromSIBase (dValue)),
-				0.0000000001d);
+				PrecisionExpectations.FOR_DOUBLES);
 		assertEquals(fValue,
 				usmile.convertToSIBase (usmile.convertFromSIBase (fValue)),
-				0.0001f);
+				PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(2.0d / 1609.347219d, usmile.convertFromSIBase(2.0d), 0.000001d);
-		assertEquals(2.0f / 1609.347219f, usmile.convertFromSIBase(2.0f), 0.000001f);
+		assertEquals(2.0d / 1609.347219d, usmile.convertFromSIBase(2.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(2.0f / 1609.347219f, usmile.convertFromSIBase(2.0f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(2.0d * 1609.347219d, usmile.convertToSIBase(2.0d), 0.000001d);
-		assertEquals(2.0f * 1609.347219f, usmile.convertToSIBase(2.0f), 0.000001f);
+		assertEquals(2.0d * 1609.347219d, usmile.convertToSIBase(2.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(2.0f * 1609.347219f, usmile.convertToSIBase(2.0f), PrecisionExpectations.FOR_FLOATS);
 	}
 }

@@ -18,6 +18,7 @@ package org.bitpipeline.lib.units.deriv;
 import junit.framework.TestCase;
 
 import org.bitpipeline.lib.units.Dimension;
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.deriv.area.AreaUnitFactory;
 import org.junit.Test;
@@ -41,11 +42,11 @@ public class AreaUnitsTest extends TestCase {
 		Unit sFoot = AreaUnitFactory.getSquareFoot ();
 
 		// conversion from 1.0 square foot to square meter
-		assertEquals (0.09290304d, sFoot.convertToSIBase (1.0d), Double.MIN_NORMAL);
-		assertEquals (0.09290304f, sFoot.convertToSIBase (1.0f), Float.MIN_NORMAL);
+		assertEquals (0.09290304d, sFoot.convertToSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (0.09290304f, sFoot.convertToSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 
 		// conversion from 1.0 square meter to square foot
-		assertEquals (10.76391041671d, sFoot.convertFromSIBase (1.0d), Double.MIN_NORMAL);
-		assertEquals (10.76391041671f, sFoot.convertFromSIBase (1.0f), Float.MIN_NORMAL);
+		assertEquals (10.76391041671d, sFoot.convertFromSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (10.76391041671f, sFoot.convertFromSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 	}
 }

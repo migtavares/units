@@ -17,6 +17,7 @@ package org.bitpipeline.lib.units.deriv;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.length.Metre;
 import org.bitpipeline.lib.units.base.mass.Gram;
@@ -34,11 +35,11 @@ public class PrefixedUnitsTest extends TestCase {
 	@Test
 	public void testRoundTripConversionsCm () {
 		Unit cm = new PrefixedUnit (Prefix.CENTI, Metre.unit ());
-		float value = 100.0f;
+		float value = 100.000f;
 
 		float m = cm.convertToSIBase (value);
-		assertEquals (1f, m, Float.MIN_NORMAL*10f);
-		assertEquals (100f, cm.convertFromSIBase (m), Float.MIN_NORMAL*10f);
+		assertEquals (1.0f, m, PrecisionExpectations.FOR_FLOATS);
+		assertEquals (100.0f, cm.convertFromSIBase (m), PrecisionExpectations.FOR_FLOATS);
 	}
 
 	@Test
@@ -47,8 +48,8 @@ public class PrefixedUnitsTest extends TestCase {
 				Prefix.KILO,
 				AreaUnitFactory.getSquareMetre ());
 		/* 1 km^2 = 1_000_000 m^2 */
-		assertEquals (1000000f, km2.convertToSIBase (1.0f), Float.MIN_NORMAL*10f);
-		assertEquals (1000000, km2.convertToSIBase (1.0), Double.MIN_NORMAL*10.0);
+		assertEquals (1000000.0d, km2.convertToSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (1000000.0f, km2.convertToSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 	}
 
 	@Test
@@ -58,11 +59,11 @@ public class PrefixedUnitsTest extends TestCase {
 		assertEquals ("Kg", kg.getSymbol ());
 		assertEquals (Gram.unit (), kg.getBaseUnit ());
 
-		assertEquals (1f, kg.convertFromSIBase (1f), Float.MIN_NORMAL*10f);
-		assertEquals (1d, kg.convertFromSIBase (1d), Double.MIN_NORMAL*10d);
+		assertEquals (1.0d, kg.convertFromSIBase (1.0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (1.0f, kg.convertFromSIBase (1.0f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals (1f, kg.convertToSIBase (1f), Float.MIN_NORMAL*10f);
-		assertEquals (1d, kg.convertToSIBase (1d), Double.MIN_NORMAL*10d);
+		assertEquals (1d, kg.convertToSIBase (1d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals (1f, kg.convertToSIBase (1f), PrecisionExpectations.FOR_FLOATS);
 
 		PrefixedUnit g = new PrefixedUnit (Prefix.IDENT, Gram.unit ());
 		assertEquals ("gram", g.getName ());

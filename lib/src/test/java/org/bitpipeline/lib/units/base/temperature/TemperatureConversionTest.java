@@ -17,15 +17,13 @@ package org.bitpipeline.lib.units.base.temperature;
 
 import junit.framework.TestCase;
 
+import org.bitpipeline.lib.units.PrecisionExpectations;
 import org.bitpipeline.lib.units.Unit;
 import org.bitpipeline.lib.units.base.temperature.Celsius;
 import org.bitpipeline.lib.units.base.temperature.Fahrenheit;
 import org.junit.Test;
 
 public class TemperatureConversionTest extends TestCase {
-	static final private float fDELTA = 0.001f;
-	static final private double dDELTA = 0.001d;
-
 	@Test
 	public void testCelciusKelvinConvertion () {
 		Unit celcius = Celsius.unit ();
@@ -34,40 +32,44 @@ public class TemperatureConversionTest extends TestCase {
 		float fValue = (float) dValue;
 
 		// Test the SI base unit
-		assertEquals(dValue, celcius.convertToSIBase (celcius.convertFromSIBase(dValue)), TemperatureConversionTest.dDELTA);
-		assertEquals(fValue, celcius.convertToSIBase (celcius.convertFromSIBase(fValue)), TemperatureConversionTest.fDELTA);
+		assertEquals(dValue, celcius.convertToSIBase (celcius.convertFromSIBase(dValue)), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue, celcius.convertToSIBase (celcius.convertFromSIBase(fValue)), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(0.00d, celcius.convertFromSIBase (273.15d), TemperatureConversionTest.dDELTA);
-		assertEquals(0.00f, celcius.convertFromSIBase (273.15f), TemperatureConversionTest.fDELTA);
+		assertEquals(0.00d, celcius.convertFromSIBase (273.15d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(0.00f, celcius.convertFromSIBase (273.15f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(0.00d, celcius.convertToSIBase (-273.15d), TemperatureConversionTest.dDELTA);
-		assertEquals(0.00f, celcius.convertToSIBase (-273.15f), TemperatureConversionTest.fDELTA);
+		assertEquals(0.00d, celcius.convertToSIBase (-273.15d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(0.00f, celcius.convertToSIBase (-273.15f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(273.15d, celcius.convertToSIBase (0.00d), TemperatureConversionTest.dDELTA);
-		assertEquals(273.15f, celcius.convertToSIBase (0.00f), TemperatureConversionTest.fDELTA);
+		assertEquals(273.15d, celcius.convertToSIBase (0.00d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(273.15f, celcius.convertToSIBase (0.00f), PrecisionExpectations.FOR_FLOATS);
 	}
 
 	@Test
 	public void testFahrenheitKelvinConvertion () {
 		Unit fahrenheit = Fahrenheit.unit ();
 
-		double dValue = Math.random ()*1000.00d;
+		double dValue = Math.random () * 1000.000000d;
 		float fValue = (float) dValue;
 
-		assertEquals(dValue, fahrenheit.convertToSIBase (fahrenheit.convertFromSIBase(dValue)), TemperatureConversionTest.dDELTA);
-		assertEquals(fValue, fahrenheit.convertToSIBase (fahrenheit.convertFromSIBase(fValue)), TemperatureConversionTest.fDELTA);
+		assertEquals(dValue,
+				fahrenheit.convertToSIBase (fahrenheit.convertFromSIBase(dValue)),
+				PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(fValue,
+				fahrenheit.convertToSIBase (fahrenheit.convertFromSIBase(fValue)),
+				PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(255.37222222d, fahrenheit.convertToSIBase (0d), TemperatureConversionTest.dDELTA);
-		assertEquals(255.37222222f, fahrenheit.convertToSIBase (0f), TemperatureConversionTest.fDELTA);
+		assertEquals(255.372222d, fahrenheit.convertToSIBase (0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(255.372f, fahrenheit.convertToSIBase (0f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(-459.67d, fahrenheit.convertFromSIBase (0d), TemperatureConversionTest.dDELTA);
-		assertEquals(-459.67f, fahrenheit.convertFromSIBase (0f), TemperatureConversionTest.fDELTA);
+		assertEquals(-459.670000d, fahrenheit.convertFromSIBase (0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(-459.670f, fahrenheit.convertFromSIBase (0f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(0d, fahrenheit.convertToSIBase (-459.67d), TemperatureConversionTest.dDELTA);
-		assertEquals(0f, fahrenheit.convertToSIBase (-459.67f), TemperatureConversionTest.fDELTA);
+		assertEquals(0d, fahrenheit.convertToSIBase (-459.670000d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(0f, fahrenheit.convertToSIBase (-459.670f), PrecisionExpectations.FOR_FLOATS);
 
-		assertEquals(255.37222d, fahrenheit.convertToSIBase (0d), TemperatureConversionTest.dDELTA);
-		assertEquals(255.37222f, fahrenheit.convertToSIBase (0f), TemperatureConversionTest.fDELTA);
+		assertEquals(255.372222d, fahrenheit.convertToSIBase (0d), PrecisionExpectations.FOR_DOUBLES);
+		assertEquals(255.37222f, fahrenheit.convertToSIBase (0f), PrecisionExpectations.FOR_FLOATS);
 	}
 
 }
