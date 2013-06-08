@@ -25,8 +25,11 @@ import org.junit.Test;
 public class VolumeUnitsTest extends TestCase {
 	@Test
 	public void testCubicMetreUnitHasProperNamesAndSymbols () {
-		VolumeUnitFactory.getLitre (); // force the creation of a non SI unit.
 		Unit cubicMetre = VolumeUnitFactory.getCubicMetre ();
+		Unit litre = VolumeUnitFactory.getLitre ();
+
+		assertEquals (litre.getDimension ().getSIUnit (), cubicMetre.getDimension ().getSIUnit ());
+		assertEquals (litre.getDimension (), cubicMetre.getDimension ());
 
 		assertEquals ("cubic metre", cubicMetre.getName ());
 		assertEquals ("m\u00b3", cubicMetre.getSymbol ());
