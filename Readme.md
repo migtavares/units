@@ -5,7 +5,7 @@ This is a library to make using physical units easy.
 
 [![Build Status](https://travis-ci.org/migtavares/units.png?branch=master)](https://travis-ci.org/migtavares/units)
 
-Continuous integration is done on [Travis CI](https://travis-ci.org) and the status for the OwmClient can be found [here](https://travis-ci.org/migtavares/units).
+Continuous integration is done on [Travis CI](https://travis-ci.org) and the status for the Units can be found [here](https://travis-ci.org/migtavares/units).
 
 # Java docs
 Java docs are available at [bitpipeline website](http://bitpipeline.eu/apidocs/units/1.9-SNAPSHOT/).
